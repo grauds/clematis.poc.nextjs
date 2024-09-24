@@ -9,14 +9,12 @@ import { RootState } from "@/lib/store";
 
 export default function Home() {
 
-  const images = useSelector<RootState, IImage[]>((state) => state.images);
-  
+  const images = useSelector<RootState, IImage[]>((state) => state.rootStore.images);
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center h-[calc(100vh-74px)] pb-40 gap-16 font-[family-name:var(--font-geist-sans)]">
       <main className="flex w-full items-center justify-center row-start-2 sm:items-start">
-        <Slider urls={
-          images?.map((image)=>image.src)
-        }/>
+        <Slider images={images}/>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a

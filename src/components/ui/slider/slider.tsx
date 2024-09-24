@@ -4,6 +4,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { SliderImage } from "@/components/ui/image/image";
+import { IImage } from "@/lib/model";
 
 import styles from './slider.module.css'
 
@@ -12,13 +13,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 interface ISliderProps {
-    urls: string[]
+    images: IImage[]
 }
 
 export function Slider(props: Readonly<ISliderProps>) {
 
     const {
-       urls
+       images
     } = props;
 
     return (
@@ -30,11 +31,13 @@ export function Slider(props: Readonly<ISliderProps>) {
                     pagination={{ type: "bullets", clickable: true }}
                     loop={true}
                     modules={[Autoplay, Navigation, Pagination]}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
                 >
                     {
-                        urls?.map((url) => (
-                                <SwiperSlide key={url}>
-                                    <SliderImage src={url} alt={""}></SliderImage>
+                        images?.map((image) => (
+                                <SwiperSlide key={image.src}>
+                                    <SliderImage src={image.src} alt={image.text}></SliderImage>
                                 </SwiperSlide>
                              )
                         )
