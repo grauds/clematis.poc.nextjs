@@ -12,9 +12,9 @@ export function Gallery(props: Readonly<IGalleryProps>) {
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">  {
-                images?.map((image) => (
-                    <div>
-                        <img key={image} className="h-auto max-w-full rounded-lg" src={image} alt="" />
+                images?.map((image, key) => (
+                    <div key={key} >
+                        <img className="h-auto max-w-full rounded-lg" src={image} alt="" />
                     </div>
                 ))
         }
