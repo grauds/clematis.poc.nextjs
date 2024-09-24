@@ -1,4 +1,4 @@
-import { combineSlices, configureStore, createSlice, Reducer } from '@reduxjs/toolkit'
+import { combineSlices, configureStore, createSlice } from '@reduxjs/toolkit'
 
 import { IImage } from "./model";
 import { uselessApi } from './features/text/textSlice';
